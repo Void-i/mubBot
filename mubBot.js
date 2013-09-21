@@ -12,7 +12,7 @@ toSave.settings = mubBot.settings;
 toSave.moderators = mubBot.moderators;
 toSave.ruleSkip = ruleSkip;
 
-mubBot.misc.version = "2.0.21";
+mubBot.misc.version = "2.0.23";
 mubBot.misc.origin = "This bot was created by Emub and DerpTheBass alone, and it is copyrighted!";
 mubBot.misc.changelog = "Fixed some stuff with skipping and saving";
 mubBot.misc.ready = true;
@@ -64,7 +64,7 @@ function historyUpdateEvent(data){
 botMethods.skip = function(){
     setTimeout(function(){
         if(!cancel) API.moderateForceSkip();
-    }, 2500);
+    }, 3000);
 };
 
 botMethods.load = function(){
@@ -125,6 +125,7 @@ botMethods.historyUpdateEvent = function(data){
     if(botMethods.checkHistory() > 0 && mubBot.settings.historyFilter){
         if(API.getUser().permission < 2){
             API.sendChat("This song is in the history! You should make me a mod so that I could skip it!");
+        }else if(API.getUser().permission > 1){
             API.sendChat("@" + API.getDJs()[0].username + ", playing songs that are in the history isn't allowed, please check next time! Skipping..");
             botMethods.skip()
         }else if(song.duration > mubBot.settings.maxLength * 60){
@@ -839,7 +840,7 @@ botMethods.historyUpdateEvent = function(data){
         if(API.getUser(data.fromID).permission > 1){
             switch(command[0]){
                 case 'ruleskip':
-                    if(command[1].length === 13 && command[1].indexOf(':') === 1 && command[1].indexOf(1) === 0 && typeof ruleSkip[command[1]] !== 'undefined'){
+                    if(command[1].length === 13 && command[1].indexOf(':') === 1 && command[1].indexOf(1) === 0 && typeof ruleSkip[command[1]] === 'undefined'){
                         ruleSkip[command[1]] = {id: command[1], rule: command[2]};
                         $.getJSON("http://gdata.youtube.com/feeds/api/videos/"+command[1].substring(2)+"?v=2&alt=jsonc&callback=?", function(json){
                             setTimeout(function(){
@@ -859,7 +860,7 @@ botMethods.historyUpdateEvent = function(data){
                                 API.sendChat('Added to ruleskip');
                             }
                         });
-                    }else if(typeof ruleSkip[API.getMedia().id] !== 'undefined'){
+                    }else if(typeof ruleSkip[API.getMedia().id] === 'undefined'){
                     ruleSkip[API.getMedia().id] = {id: API.getMedia().id, rule: command[1]};
                     API.sendChat(API.getMedia().author+ ' - ' +API.getMedia().title+' added to ruleskip');
                     API.moderateForceSkip();
