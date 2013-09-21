@@ -1,0 +1,77 @@
+@charset "utf-8";
+#wrapper{ 
+margin: auto;
+position: absolute;
+left: 0; right: 0; bottom: 0; top: 0;	
+width: 1235px; 
+height: 913px; 
+}
+#text{
+margin: auto;
+position: absolute;
+left: 0; right: 0; bottom: 0; top: 0;	
+height: 910px;
+width: 1254px;
+color: #00D123;
+font-family: monospace;
+font-size: 20px;
+text-align: left;
+overflow-y: scroll;
+overflow-x: hidden;
+z-index: 15;
+}
+#header{
+color: #FFF;
+text-align: center;
+background: -webkit-linear-gradient(top, rgba(255,255,255,0.15) 0% ,rgba(255,255,255,0) 100%);
+background: -moz-linear-gradient(top, rgba(255,255,255,0.15) 0% , rgba(255,255,255,0) 100%);
+background: -o-linear-gradient(top, rgba(255,255,255,0.15) 0% ,rgba(255,255,255,0) 100%);
+margin: auto;
+position: absolute;
+left: 0; right: 0; top: 0;
+height: 40px;
+width: 1295px;	
+border-bottom-left-radius: 8px; 
+border-bottom-right-radius: 8px;
+box-shadow: 0 5px 50px rgba(0,0,0,0.8);
+z-index: 10;
+}
+#header-text{
+font-family: Verdana;
+position: relative;
+top: 10px;
+}
+body{
+background: url(http://i.imgur.com/sg06L2W.png);
+}
+#info{
+text-align: center;
+}
+.user, .mod{
+	padding-right: 5px;	
+}
+#allButton{
+	left: 280px
+}
+#modButton{
+	right: 1160px	
+}
+#userButton{
+	left: 145px	
+}
+#gitButton{
+	left: 1125px;
+	width: 160px;	
+}
+.button{
+	position: absolute;
+	top: 7px;
+	background: rgba(0, 0, 0, 0.34902);
+	width: 125px;
+	height: 22px;
+	padding-top: 3px;
+	border-radius: 3px;
+	color: #BBB;
+	cursor: pointer;	
+}
+

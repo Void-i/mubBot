@@ -12,7 +12,7 @@ toSave.settings = mubBot.settings;
 toSave.moderators = mubBot.moderators;
 toSave.ruleSkip = ruleSkip;
 
-mubBot.misc.version = "2.0.20";
+mubBot.misc.version = "2.0.21";
 mubBot.misc.origin = "This bot was created by Emub and DerpTheBass alone, and it is copyrighted!";
 mubBot.misc.changelog = "Fixed some stuff with skipping and saving";
 mubBot.misc.ready = true;
@@ -320,7 +320,8 @@ botMethods.historyUpdateEvent = function(data){
             }
             if(mubBot.misc.ready || mubBot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission > 1){
                 switch(command[0].toLowerCase()){
-                    /* case "meh":
+                    /* commented out because the bot isn't running on a dedicated bot account
+                     case "meh":
                      if(API.getUser(data.fromID).permission > 1 || mubBot.admins.indexOf(fromID) > -1) $("#button-vote-negative").click();
                      break;
 
@@ -329,7 +330,14 @@ botMethods.historyUpdateEvent = function(data){
                      break;*/
 
                     case "skip":
-                        API.getUser(data.fromID).permission > 1 ? API.moderateForceSkip() : API.sendChat("This commands requires being a room bouncer or of higher rank!");
+                    if(API.getUser(data.fromID).permission > 1){
+                        if(typeof command[1] === "undefined"){
+                            API.moderateForceSkip();
+                        }else{
+                            API.sendChat('@'+API.getDJs()[0].username+' '+command[1]);
+                            API.moderateForceSkip();
+                        }
+                    }
                         break;
 
                     case 'cancel':

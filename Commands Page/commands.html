@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src='commands.js'></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Bot Commands</title>
+<link rel="stylesheet" type="text/css" href="commands.css"/>
+</head>
+
+<body>
+<div id="wrapper">
+<div id="text">
+<p id='info'><b>Text inside of &lt; &gt; is required, text inside of ( ) is optional</b></p>
+<p class='user'><b>!songlink - </b>Prints the link to the video/song in chat</p>
+<p class='user'><b>!linkify &lt;link&gt; - </b>Turns the text into a link, in the case a user hasn't been in the room for 10 minutes but wants to send a link</p>
+<p class='user'><b>!mubplug - </b>Prints the link to mubPlug</p>
+<p class='user'><b>!rules (@username) - </b>Prints a link to the rules</p>
+<p class='user'><b>!marco - </b>Returns polo to test latency</p>
+<p class='user'><b>!weird || !weirdday || !wierd || !wierdday (@username)  - </b>Prints the link for the weird day song list</p>
+<p class='user'><b>!theme (@username) - </b>Prints the room theme</p>
+<p class='user'><b>!rule &lt;rule #&gt; - </b>Prints the rule  specified by the rule number</p>
+<p class='user'><b>!taco (@username) - </b>Gives a taco to the user specified, or a random user if no username is given</p>
+<p class='user'><b>!hug (@username) - </b>Hugs the user specified, or a random user if no username is given</p>
+<p class='user'><b>!cookie (@username) - </b>Presents the user specified with a suprise, or presents it to a random user if no username is given</p>
+<p class='user'><b>:notamused: - </b>Prints ಠ_ಠ</p>
+<p class='user'><b>:eyeroll: - </b>Prints ¬_¬</p>
+<p class='user'><b>:yuno: - </b>Prints ლ(ಥ益ಥლ</p>
+<p class='user'><b>!origin || !author || !authors || !creator - </b>Prints some info about who created the bot</p>
+<p class='user'><b>!version - </b>Prints the bot version</p>
+<p class='user'><b>!skype (@username) - </b>Prints the link to the skype group form</p>
+<p class='user'><b>!steam (@username) - </b>Prints the link to the steam group</p>
+<p class='user'><b>!wiki (text) - </b>Provides a link to the wikipedia article for the text if it exists</p>
+<p class='mod'> <b>!skip (reason) - </b>Skips the current song</p>
+<p class='mod'> <b>!cancel - </b>Cancels autoskipping the current song for history skip, ruleskip, and length skip</p>
+<p class='mod'> <b>!lockskip - </b>Locks the booth, skips the current DJ, and unlocks the booth (bot must be manager+)</p>
+<p class='mod'> <b>!removedfilter || !rvf - </b>Prints the state of the removed video filter</p>
+<p class='mod'> <b>!toggleremovedfilter || !trvf - </b>Toggles the removed video filter</p>
+<p class='mod'> <b>!historyfilter || !hf - </b>Prints the state of the history filter</p>
+<p class='mod'> <b>!togglehistoryfilter || !thf - </b>Toggles the history filter</p>
+<p class='mod'> <b>!swearfilter || !sf - </b>Prints the state of the swear filter</p>
+<p class='mod'> <b>!toggleswearfilter || !tsf - </b>Toggles the swear filter</p>
+<p class='mod'> <b>!racismfilter || !rf - </b>Prints the state of the racism filter</p>
+<p class='mod'> <b>!toggleracismfilter || !trf - </b>Toggles the racism filter</p>
+<p class='mod'> <b>!beggerfilter || !bf - </b>Prints the state of the begger filter</p>
+<p class='mod'> <b>!togglebeggerfilter || !tbf - </b>Toggles the begger filter</p>
+<p class='mod'> <b>!save - </b>Manually saves settings</p>
+<p class='mod'> <b>!changelog - </b>Prints recent changes</p>
+<p class='mod'> <b>!ruleskip (Song ID <i>WITH FORMAT</i>) &lt;Rule number/Written out rule> - </b>This is probably the most complicated command so I will go into more detail. To ruleskip the currently playing song the format would be !ruleskip &lt;Rule #> you can always replace the rule number with a written out rule, such as 'Removed video'. To add any other song to ruleskip the format would be !ruleskip &lt;song ID> &lt;Rule #>. The song ID MUST include the format. For youtube it would look like this 1:I4aM_S5fyoM for soundcloud it would look like this 2:58ve93cn</p>
+<p class='mod'> <b>!checkruleskip (ID) - </b>Checks if the song is in the ruleskip object</p>
+<p class='mod'> <b>!ruleskipdelete (ID) - </b>Removes the song from the ruleskip object</p>
+<p class='mod'> <b>!status - </b>Prints bot info for uptime, cooldown, maxlength, filter toggles, etc.</p>
+<p class='mod'> <b>!cooldown (cooldown in seconds or disable) - </b>Prints the cooldown length, sets the cooldown to the specifies length, or disables the cooldown</p>
+<p class='mod'> <b>!maxlength (maxlength in minutes or disable) - </b>Prints the maxlength, sets the maxlength, or disabled the maxlength</p>
+<p class='user'><b>!commands (@username) - </b>Prints the link to this website</p>
+</div>
+</div>
+<div id="header">
+<div id='modButton' class='button'>
+Mod Commands
+</div>
+<div id='userButton' class='button'>
+User Commands
+</div>
+<div id='allButton' class='button'>
+All Commands
+</div>
+<a href='https://github.com/derpthebass/mubBot' target='_blank' id='gitButton' class='button'>
+Check it out on Github!
+</a>
+<span id="header-text">Command List</span>
+</div>
+</body>
+</html>
