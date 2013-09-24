@@ -2,15 +2,13 @@
 #wrapper{ 
 margin: auto;
 position: absolute;
-left: 0; right: 0; bottom: 0; top: 0;	
+left: 0; right: 0; bottom: 0; top: 42px;	
 width: 1235px; 
-height: 913px; 
 }
 #text{
 margin: auto;
 position: absolute;
 left: 0; right: 0; bottom: 0; top: 0;	
-height: 910px;
 width: 1254px;
 color: #00D123;
 font-family: monospace;
