@@ -12,9 +12,9 @@ toSave.settings = mubBot.settings;
 toSave.moderators = mubBot.moderators;
 toSave.ruleSkip = ruleSkip;
 
-mubBot.misc.version = "2.0.26";
+mubBot.misc.version = "2.0.27";
 mubBot.misc.origin = "This bot was created by Emub and DerpTheBass alone, and it is copyrighted!";
-mubBot.misc.changelog = "Changed history update to dj advance";
+mubBot.misc.changelog = "Added a secondary check for history";
 mubBot.misc.ready = true;
 mubBot.misc.lockSkipping = false;
 mubBot.misc.lockSkipped = "0";
@@ -84,14 +84,13 @@ botMethods.loadStorage = function(){
 };
 
 botMethods.checkHistory = function(){
-    currentlyPlaying = API.getMedia(); history = API.getHistory();
+    currentlyPlaying = API.getMedia(), history = API.getHistory();
     caught = 0;
     for(var i = 0; i < history.length; i++){
         if(currentlyPlaying.cid === history[i].media.cid){
             caught++;
         }
     }
-
     caught--;
     return caught;
 };
@@ -134,6 +133,13 @@ botMethods.djAdvanceEvent = function(data){
                 botMethods.skip();
             }, mubBot.settings.maxLength * 60000);
             //API.sendChat("@"+API.getDJs()[0].username+" This song will be skipped " + mubBot.settings.maxLength + " minutes from now because it exceeds the max song length.");
+        }else{
+            setTimeout(function(){
+                if(botMethods.checkHistory() > 0 && mubBot.settings.historyFilter){
+                    API.sendChat("@" + API.getDJs()[0].username + ", playing songs that are in the history isn't allowed, please check next time! Skipping..");
+                    botMethods.skip()
+                };
+            }, 1500);
         }
     }
 };
